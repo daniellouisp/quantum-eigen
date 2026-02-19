@@ -1,1 +1,1 @@
-# quantum-eigen
+# Quantum Eigenvalue Solver
