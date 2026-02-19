@@ -117,7 +117,14 @@ def main():
     args = parser.parse_args()
 
     vals, _ = solve_eigen(N=args.N, potential=args.potential, n_eigs=args.neigs)
+
+    # NEW: save eigenvalues to a text file
+    outname = f"eigs_{args.potential}_N{args.N}.txt"
+    with open(outname, "w") as f:
+        np.savetxt(f, vals)
+
     print(f"N={args.N}, potential={args.potential}, neigs={args.neigs}")
+    print(f"Wrote eigenvalues to: {outname}")
     print("Lowest eigenvalues:")
     for k, v in enumerate(vals, start=1):
         print(f"{k:2d}: {v:.8f}")
